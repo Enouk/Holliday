@@ -13,7 +13,7 @@
 %%
 %% Test Functions
 %%
-start_table_test_() ->
+start_table_test() ->
 	Table=#table{},
 	?assertEqual([], holliday_admin_service:start_table(Table)).
 
