@@ -1,0 +1,1 @@
+-record(table, { uid, node, seat_count, seats}).
