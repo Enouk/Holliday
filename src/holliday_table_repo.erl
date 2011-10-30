@@ -22,8 +22,10 @@ create(Table) when is_record(Table, table) ->
 	
   
 get(TableUID) ->
-	{atomic, Table} = holliday_db:read(table, TableUID),
-	{ok, Table}.
+	case holliday_db:read(table, TableUID) of
+		{atomic, []} -> not_found;
+		{atomic, [Table]} -> {ok, Table}
+	end.
 
 update(Table) when is_record(Table, table) ->
 	{atomic, ok} = holliday_db:write(Table),

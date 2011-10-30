@@ -37,8 +37,8 @@ start_link() ->
 	supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
 
-start_table(T = #table{}) ->
-	ChildSpec = {T#table.uid,{table,start_link,[T]},temporary,2000,worker,[table]},
+start_table(T) ->
+	ChildSpec = {T#table.uid,{holliday_table,start_link,[T]},temporary,2000,worker,[holliday_table]},
 	supervisor:start_child(?MODULE, ChildSpec).
 
 			
