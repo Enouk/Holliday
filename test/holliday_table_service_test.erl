@@ -16,14 +16,13 @@ cleanup({ok, _Pid}) -> ok.
 %% Test Functions
 %%
 start_table_test_() ->
-	T=#table{uid=apa},
-		{ setup,
+	T=#table{uid='player1@table1'},
+	{ setup,
 	  fun()-> setup(),holliday_table_service:create_table(T) end,
 	  fun cleanup/1,
 	  ?_test(
-		begin
-			?assertEqual({ok, T#table.uid}, holliday_table_service:start_table(T#table.uid))
-		end)
-		}.
+	  	?assertEqual({ok, T#table.uid}, holliday_table_service:start_table(T#table.uid))
+	  )
+	}.
 	
 
